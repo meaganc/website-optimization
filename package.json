@@ -1,0 +1,14 @@
+{
+  "name": "optimization-project",
+  "version": "1.0.0",
+  "description": "Optimization Project",
+  "author": "Meagan Cooney",
+  "license": "ISC",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-concat": "^1.0.1",
+    "grunt-contrib-watch": "^1.0.0",
+    "grunt-inline": "^0.3.6",
+    "load-grunt-tasks": "^3.5.2"
+  }
+}

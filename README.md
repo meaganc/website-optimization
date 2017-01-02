@@ -8,10 +8,11 @@ Navigate to the views/pizza.html and confirm via the Chrome dev tools that the p
     ```
     <script async src="http://www.google-analytics.com/analytics.js"></script>
     ```
-    * Utilized the information from [this](http://keithclark.co.uk/articles/loading-css-without-blocking-render/) blog post to asynchronously load CSS. This produced a very significant impact on the Index PageSpeed Insights score.
+    * Initially, I utilized the information from [this](http://keithclark.co.uk/articles/loading-css-without-blocking-render/) blog post to asynchronously load CSS.
     ```
     <link href="css/style.css" rel="stylesheet" media="none" onload="if(media!='all')media='all'">
     ```
+    This produced a very significant impact on the Index PageSpeed Insights score, but it was not enough to take the score over 90. To achieve this final step, I configured grunt to run the grunt-inline task and inline the CSS in the output HTML, and then cleaned up this HTML using an HTML beautifier.
     * Webfonts were left as is, as they did not make a significant impact on the PageSpeed Insights score. However, we could save them locally if it became a concern.
 * Main.js
   * The main bottleneck was the creation of the pizzas and the resizing of the pizzas.
@@ -25,10 +26,11 @@ Navigate to the views/pizza.html and confirm via the Chrome dev tools that the p
     ```
     items[i].style.transform = ...;
     ```
-    was one of the most significant changes in terms of FPS. Changing the left property requires the [Layout operation](https://www.html5rocks.com/en/tutorials/speed/high-performance-animations/), which is much more browser-intensive. To compensate for this, I increased the number of columns on the moving pizzas to 12.
+    was one of the most significant changes in terms of FPS. Changing the left property requires the [Layout operation](https://www.html5rocks.com/en/tutorials/speed/high-performance-animations/), which is much more browser-intensive. To compensate for this, I initially increased the number of columns on the moving pizzas to 12.
     ```
     <div id="movingPizzas1" class="col-md-12"></div>
     ```
+    Apparently, on some  screens this was not enough, so I also switched ```elem.style.left``` to ```elem.basicLeft = (i % cols) * s;```
     * Performance Tweak: Switched
     ```
     document.querySelector("#pizzaSize").innerHTML = 'pizza-size-options';
