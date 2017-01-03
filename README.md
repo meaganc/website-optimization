@@ -48,7 +48,7 @@ Navigate to the views/pizza.html and confirm via the Chrome dev tools that the p
     var windowWidth = document.getElementById("randomPizzas").offsetWidth;
     ```
 
-    * In the initial implementation, when looping through the pizza sizes to change them, the pizza size was checked on every pizza through the loop. Every pizza had the same value, so this was unnecessary and significantly impacted performance.
+    * In the initial implementation, when looping through the pizza sizes to change them, the pizza size was checked on every pizza through the loop. Every pizza had the same value, so this was unnecessary and significantly impacted performance. This variable of all pizzas is also used to update the pizza widths so lookup doesn't happen again.
 * Images
   * Adjusted the image size, i.e. an image that takes up 600px max on the screen does not need to be 2000px wide
   * Used ImageOptim software to compress the images
