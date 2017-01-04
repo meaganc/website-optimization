@@ -1,6 +1,6 @@
 ## Website Performance Optimization portfolio project
 
-Navigate to the views/pizza.html and confirm via the Chrome dev tools that the pizzas are properly rendered and are at an acceptable FPS. In order to effectively test the site with Google PageSpeed Insights, the site must be available to the wider internet. The site can be accessed at [website optimization] (https://meaganc.github.io/website-optimization/).
+Navigate to the views/pizza.html and confirm via the Chrome dev tools that the pizzas are properly rendered and are at an acceptable FPS. In order to effectively test the site with Google PageSpeed Insights, the site must be available to the wider internet. The site can be accessed at [website optimization] (https://meaganc.github.io/website-optimization/). From here, the PageSpeed can be tested on the main index page, and the user can see the pizza creation by clicking on the Pizza project. The user can then adjust the size of the pizzas and scroll to see the pizzas moving across the screen.
 
 ### Changes Made to Optimize
 * Index.html
@@ -49,6 +49,10 @@ Navigate to the views/pizza.html and confirm via the Chrome dev tools that the p
     ```
 
     * In the initial implementation, when looping through the pizza sizes to change them, the pizza size was checked on every pizza through the loop. Every pizza had the same value, so this was unnecessary and significantly impacted performance. This variable of all pizzas is also used to update the pizza widths so lookup doesn't happen again.
+    * Moved the creation of the pizza image element variable outside the pizza creation loop
+    *  ```document.querySelectorAll('.mover'); ``` to ```document.getElementsByClassName('mover');```
+    * Created the phase variable for the scroll calculation moved it outside the loop at line 521.
+
 * Images
   * Adjusted the image size, i.e. an image that takes up 600px max on the screen does not need to be 2000px wide
   * Used ImageOptim software to compress the images

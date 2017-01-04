@@ -515,9 +515,11 @@ function updatePositions() {
   if (frame === 1 || frame % 2 === 0) {
     window.performance.mark("mark_start_frame");
 
-    var items = document.querySelectorAll('.mover');
+    var items = document.getElementsByClassName('mover');
+    var phase;
+    var scrollVal = document.body.scrollTop / 1250;
     for (var i = 0; i < items.length; i++) {
-      var phase = Math.sin((document.body.scrollTop / 1250) + (i % 5));
+      phase = Math.sin((scrollVal) + (i % 5));
       //Switch from left to transform
       items[i].style.transform = 'translateX(' + 100 * phase + 'px)';
     }
@@ -541,8 +543,9 @@ document.addEventListener('DOMContentLoaded', function() {
   var cols = 8;
   var s = 256;
   //Reduce the number of created pizzas
+  var elem;
   for (var i = 0; i < 50; i++) {
-    var elem = document.createElement('img');
+    elem = document.createElement('img');
     elem.className = 'mover';
     elem.src = "images/pizza.png";
     elem.style.height = "100px";
